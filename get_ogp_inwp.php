@@ -6,7 +6,8 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
  *
- * Github : https://github.com/ddryo/Get_OGP_InWP
+ * Requires PHP: 7.0
+ * Github: https://github.com/ddryo/Get_OGP_InWP
  */
 class Get_OGP_InWP {
 
@@ -152,5 +153,51 @@ class Get_OGP_InWP {
 		}
 
 		return $ogp_data;
+	}
+
+
+	/**
+	 * Extract the information required for the blog card from the acquired OGP data
+	 *
+	 * @param array $ogps    Result of get() method
+	 * @return array Extracted data
+	 */
+	public static function extract_card_data( $ogps ) {
+
+		$site_name = $ogps['og:site_name'] ?? '';
+
+		// Page title
+		$title = $ogps['og:title'] ?? '';
+		if ( '' === $title ) {
+			$title = $ogps['title'] ?? '';
+		}
+
+		// Page description
+		$description = $ogps['og:description'] ?? '';
+		if ( '' === $description ) {
+			$description = $ogps['description'] ?? '';
+		}
+
+		// Thumbnail
+		$thumbnail = $ogps['og:image'] ?? '';
+		if ( '' === $thumbnail ) {
+			$thumbnail = $ogps['thumbnail'] ?? '';
+		}
+
+		// favicon image
+		$icon = $ogps['icon'] ?? '';
+		if ( empty( $icon ) ) {
+			$icon = $icon['apple-touch-icon'] ?? '';
+		} elseif ( is_array( $icon ) ) {
+			$icon = $icon[0];
+		}
+
+		return [
+			'site_name'   => $site_name,
+			'title'       => $title,
+			'description' => $description,
+			'thumbnail'   => $thumbnail,
+			'icon'        => $icon,
+		];
 	}
 }
