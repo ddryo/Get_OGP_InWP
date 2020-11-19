@@ -11,8 +11,7 @@ Get OGP and metadata information from external sites.
 ```
 require_once 'get_ogp_inwp.php';
 
-$url = 'https://example.com/hoge/';
-
+$url  = 'https://example.com/hoge/';
 $ogps = \Get_OGP_InWP::get( $url );
 ```
 
@@ -69,10 +68,8 @@ Extract the information required for the blog card from the acquired OGP data.
 ```
 require_once 'get_ogp_inwp.php';
 
-$url = 'https://example.com/hoge/';
-
-$ogps = \Get_OGP_InWP::get( $url );
-
+$url       = 'https://example.com/hoge/';
+$ogps      = \Get_OGP_InWP::get( $url );
 $card_data = \Get_OGP_InWP::extract_card_data( $ogps );
 ```
 
