@@ -23,9 +23,9 @@ $url = 'https://example.com/hoge/';
 
 // For example like this. (This is the default value)
 $fetch_args = [
-	'timeout'     => 15,
-	'redirection' => 3,
-	'sslverify'   => false,
+    'timeout'     => 15,
+    'redirection' => 3,
+    'sslverify'   => false,
 ];
 
 $ogps = \Get_OGP_InWP::get( $url, $fetch_args );
@@ -42,15 +42,15 @@ $url = 'https://example.com/hoge/';
 
 // For example like this. (This is the default value)
 $targets = [
-	'title'    => true,
-  'icon'     => true,
-  'og'       => true,
-  'fb'       => true,
-  'twitter'  => true,
-  'meta'     => [
-    'description',
-    'thumbnail',
-  ],
+    'title'    => true,
+    'icon'     => true,
+    'og'       => true,
+    'fb'       => true,
+    'twitter'  => true,
+    'meta'     => [
+        'description',
+        'thumbnail',
+    ],
 ];
 
 $ogps = \Get_OGP_InWP::get( $url, null, $targets );
